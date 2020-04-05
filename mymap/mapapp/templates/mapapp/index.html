@@ -11,13 +11,24 @@
   </head>
   <body>
     <form id="mapform" method="get">
-        Longitude: <input type="text" name="Longitude" id="longitude" onChange="updateAction()"> </input>
+        Longitude: <input type="text" name="longitude" id="longitude" onChange="updateAction()"> </input>
         Latitude: <input type="text" name="latitude" id="latitude" onChange="updateAction()"> </input>
         <input id="mapsubmit" type="submit" value="go"></input>
     </form>
     <h3>Google Maps</h3>
+
     <!--The div element for the map -->
     <div id="map"></div>
+    {% for location in history %}
+  <p> Longitude: {{location.longitude}}, Latitude: {{location.latitude}} </p>
+{% endfor %}
+  </body>
+</html>
+
+
+
+
+
     <script>
     function updateAction() {
         var longitude = document.getElementById("longitude").value;
@@ -42,5 +53,3 @@
     -->
     <script async defer src="https://maps.googleapis.com/maps/api/js?keyAIzaSyDnFa4bJudYbb1XVTuk8pu6xH7f9Ym927A=&callback=initMap"
 type="text/javascript"></script>
-  </body>
-</html>

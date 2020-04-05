@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_google_maps',
+    #'django_google_maps',
     'mapapp',
 ]
 
@@ -121,4 +121,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-GOOGLE_MAPS_API_KEY='AIzaSyCXWYitqWD8lHNPCZ4wg_-_ZzXIWmrVHJs'
+#GOOGLE_MAPS_API_KEY='AIzaSyCXWYitqWD8lHNPCZ4wg_-_ZzXIWmrVHJs'
