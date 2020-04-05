@@ -3,8 +3,6 @@ from __future__ import unicode_literals
 from django.http import HttpResponse
 from django.template import loader
 
-from .models import Rental
-
 #
 def index(request):
     latitude=request.GET.get('latitude', 0)

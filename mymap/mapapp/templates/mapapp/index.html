@@ -10,20 +10,30 @@
     </style>
   </head>
   <body>
+    <form id="mapform" method="get">
+        Longitude: <input type="text" name="Longitude" id="longitude" onChange="updateAction()"> </input>
+        Latitude: <input type="text" name="latitude" id="latitude" onChange="updateAction()"> </input>
+        <input id="mapsubmit" type="submit" value="go"></input>
+    </form>
     <h3>Google Maps</h3>
     <!--The div element for the map -->
     <div id="map"></div>
     <script>
-// Initialize and add the map
-function initMap() {
-  // The location of Uluru
-  var uluru = {lat: {{latitude}}, lng: {{longitude}}};
-  // The map, centered at Uluru
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 4, center: uluru});
-  // The marker, positioned at Uluru
-  var marker = new google.maps.Marker({position: uluru, map: map});
-}
+    function updateAction() {
+        var longitude = document.getElementById("longitude").value;
+        var latitude = document.getElementById("latitude").value;
+        document.getElementById("mapform").setAttribute("action", "/mapapp/?longitude=" + longitude + "&latitude=" + latitude);
+    }
+
+    function initMap() {
+      // The location of Uluru
+      var uluru = {lat: {{latitude}}, lng: {{longitude}}};
+      // The map, centered at Uluru
+      var map = new google.maps.Map(
+          document.getElementById('map'), {zoom: 4, center: uluru});
+      // The marker, positioned at Uluru
+      var marker = new google.maps.Marker({position: uluru, map: map});
+    }
     </script>
     <!--Load the API from the specified URL
     * The async attribute allows the browser to render the page while the API loads
