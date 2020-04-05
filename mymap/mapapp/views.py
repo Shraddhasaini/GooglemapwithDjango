@@ -9,6 +9,6 @@ from .models import Rental
 def index(request):
     template = loader.get_template('mapapp/index.html')
     context = {
-        'latitude': -20.344, 'longitude': 131.036,
+        'latitude': -0.344, 'longitude': 11.036,
     }
     return HttpResponse(template.render(context, request))
