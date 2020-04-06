@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       /* Set the size of the div element that contains the map */
+      #map {
+        height: 400px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */
+       }
+    </style>
+  </head>
+  <body>
+    <form id="mapform" method="get">
+        origin: <input type="text" name="origin" id="origin" onChange="updateAction()"> </input>
+        destination: <input type="text" name="destination" id="destination" onChange="updateAction()"> </input>
+        <input id="mapsubmit" type="submit" value="go"></input>
+    </form>
+    <h3>Path</h3>
+
+    <!--The div element for the map -->
+    <div id="map"></div>
+  </body>
+</html>
+
+
+<script>
+    function updateAction() {
+        var origin = document.getElementById("origin").value;
+        var destination = document.getElementById("destination").value;
+        document.getElementById("mapform").setAttribute("action", "https://maps.googleapis.com/maps/api/directions/json?origin=" + origin + "&destination=" + destination + "&key=AIzaSyDnFa4bJudYbb1XVTuk8pu6xH7f9Ym927A");
+    }
+
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/directions/json"
+    type="text/javascript"></script>

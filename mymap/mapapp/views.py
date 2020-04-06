@@ -17,3 +17,11 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 #
+def diretion(request):
+    destination=request.GET.get('destination', 0)
+    origin =request.GET.get('origin', 0)
+    template = loader.get_template('mapapp/diretion.html')
+    context = {
+        'destination': destination, 'origin': origin,
+    }
+    return HttpResponse(template.render(context, request))
