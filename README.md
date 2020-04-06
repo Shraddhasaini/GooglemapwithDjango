@@ -3,7 +3,7 @@
 
 [![GitHub issues](https://img.shields.io/github/issues/Shraddhasaini/GooglemapwithDjango.svg)](https://github.com/Shraddhasaini/GooglemapwithDjango/)
 [![GitHub pull-requests](https://img.shields.io/github/issues-pr/Shraddhasaini/GooglemapwithDjango.svg)](https://github.com/Shraddhasaini/GooglemapwithDjango/)
-[![GitHub forks](https://img.shields.io/github/forks/Shraddhasaini/GooglemapwithDjangor-Data.svg?style=social&label=Watch&maxAge=2592000)](https://github.com/Shraddhasaini/GooglemapwithDjango/)
+
 
 This is a Django project which simplifies feature of a map using Google maps API.
 
