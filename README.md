@@ -9,9 +9,9 @@ This is a Django project which simplifies feature of a map using Google maps API
 
 ## :rainbow: API for Routes :
 
-* **Directions API
-* **Distance Matrix API
-* **Roads API
+* Directions API
+* Distance Matrix API
+* Roads API
 
 ## :rocket: Usage :
 
