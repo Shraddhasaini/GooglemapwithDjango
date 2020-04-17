@@ -1,48 +1,121 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <style>
-      #map {
-        height: 400px;
-        width: 100%;
-       }
-    </style>
-  </head>
-  <body>
-    <form id="mapform" method="get">
-        origin: <input type="text" name="origin" id="origin" onChange="updateAction()"> </input>
-        destination: <input type="text" name="destination" id="destination" onChange="updateAction()"> </input>
-        <input id="mapsubmit" type="submit" value="go"></input>
-    </form>
-    <h3>Path</h3>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
 
-    <!--The div element for the map -->
-    <div id="map"></div>
-  </body>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body >
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+    <script type="text/javascript">
+        var source, destination;
+        var directionsDisplay;
+        var directionsService = new google.maps.DirectionsService();
+        google.maps.event.addDomListener(window, 'load', function () {
+            new google.maps.places.SearchBox(document.getElementById('txtSource'));
+            new google.maps.places.SearchBox(document.getElementById('txtDestination'));
+            directionsDisplay = new google.maps.DirectionsRenderer({ 'draggable': true });
+        });
+
+        function GetRoute() {
+            var start = new google.maps.LatLng(19.8780, 75.8368);
+            var mapOptions = {
+                zoom: 7,
+                center: start
+            };
+            map = new google.maps.Map(document.getElementById('dvMap'), mapOptions);
+            directionsDisplay.setMap(map);
+            directionsDisplay.setPanel(document.getElementById('dvPanel'));
+
+
+
+		   source = document.getElementById("txtSource").value;
+            destination = document.getElementById("txtDestination").value;
+
+            var request = {
+                origin: source,
+                destination: destination,
+                travelMode: google.maps.TravelMode.DRIVING
+            };
+            directionsService.route(request, function (response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                }
+            });
+
+
+
+            var service = new google.maps.DistanceMatrixService();
+            service.getDistanceMatrix({
+                origins: [source],
+                destinations: [destination],
+                travelMode: google.maps.TravelMode.DRIVING,
+                unitSystem: google.maps.UnitSystem.METRIC,
+                avoidHighways: false,
+                avoidTolls: false
+            }, function (response, status) {
+                if (status == google.maps.DistanceMatrixStatus.OK && response.rows[0].elements[0].status != "ZERO_RESULTS") {
+                    var distance = response.rows[0].elements[0].distance.text;
+                    var duration = response.rows[0].elements[0].duration.text;
+                    var dvDistance = document.getElementById("dvDistance");
+                    dvDistance.innerHTML = "";
+                    dvDistance.innerHTML += "Distance: " + distance + "<br />";
+                    dvDistance.innerHTML += "Duration:" + duration;
+
+                } else {
+                    alert("Unable to find the distance via road.");
+                }
+            });
+        }
+    </script>
+
+
+
+<div class="container-fluid">
+<div class="row">
+   <div class="panel panel-default">
+   <div class="panel-heading"  style="text-align:center;font-family:default;background-color: #fff;"><h3><b>&nbsp;Google Direction API</b></h3></div>
+   </div>
+</div>
+
+<div class="row">
+   <div class="container-fluid" >
+	   <div class="panel panel-warning">
+       <div class="panel-heading"  style="text-align:center;font-family:default;background-color: #fff;"><h3><b>&nbsp;Find Route</b></h3></div>
+
+	   <div class="panel-body">
+
+	     <form>
+	  <div class="form-group">
+      <label for="source">Starting Point:</label>
+      <input type="text" class="form-control" id="txtSource" value="Shivalik College of Engineering Dehradun, Central Hope Town, Uttarakhand, India" name="name1">
+    </div>
+	<div class="form-group">
+      <label for="Dest">Destination Point:</label>
+      <input type="text" class="form-control" id="txtDestination" value="Rannlab Technologies Pvt. Ltd, Sector Alpha Road, Alpha-I Commercial Belt, Alpha I, Greater Noida, Uttar Pradesh, India" name="name2">
+    </div>
+
+    <input type="button" onclick="GetRoute()" class="btn btn-success" value="Get Route">
+
+
+	</form>
+</div>
+    </div>
+	</div>
+	</div>
+	<div class="col-md-12" >
+				<div id="dvDistance"><b>
+                </div>
+
+                <div class="col-md-6" id="dvMap" style=" height: 500px">
+                </div>
+
+                <div class="col-md-6" id="dvPanel" style="height: 500px;overflow-x: scroll;">
+                </div>
+				</div>
+</div>
+</body>
 </html>
-
-<script>
-'use strict';
-
-var got    = require('got');
-var assert = require('assert');
-
-var URL = 'https://maps.googleapis.com/maps/api/directions/json';
-
-module.exports = function(options) {
-  assert(options && options.origin && options.destination, 'Invalid parameters, options requires origin and destination property');
-  assert(typeof(options.origin) === 'string' && typeof(options.destination) === 'string', 'Origin and destination properties only accept string');
-
-  return got(URL, {
-    query: options,
-    json: true
-  })
-  .then(function(response) {
-    var result = response.body;
-    if (!result.status || result.status !== 'OK') {
-      throw new Error('direction not found');
-    }
-    return result;
-  });
-};
-</script>
