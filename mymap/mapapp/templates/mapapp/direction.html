@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+    <form id="mapform" method="get">
+        origin: <input type="text" name="origin" id="origin" onChange="updateAction()"> </input>
+        destination: <input type="text" name="destination" id="destination" onChange="updateAction()"> </input>
+        <input id="mapsubmit" type="submit" value="go"></input>
+    </form>
+    <h3>Path</h3>
+
+    <!--The div element for the map -->
+    <div id="map"></div>
+  </body>
+</html>
+
+<script>
+'use strict';
+
+var got    = require('got');
+var assert = require('assert');
+
+var URL = 'https://maps.googleapis.com/maps/api/directions/json';
+
+module.exports = function(options) {
+  assert(options && options.origin && options.destination, 'Invalid parameters, options requires origin and destination property');
+  assert(typeof(options.origin) === 'string' && typeof(options.destination) === 'string', 'Origin and destination properties only accept string');
+
+  return got(URL, {
+    query: options,
+    json: true
+  })
+  .then(function(response) {
+    var result = response.body;
+    if (!result.status || result.status !== 'OK') {
+      throw new Error('direction not found');
+    }
+    return result;
+  });
+};
+</script>

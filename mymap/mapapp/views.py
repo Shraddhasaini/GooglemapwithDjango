@@ -20,7 +20,7 @@ def index(request):
 def diretion(request):
     destination=request.GET.get('destination', 0)
     origin =request.GET.get('origin', 0)
-    template = loader.get_template('mapapp/diretion.html')
+    template = loader.get_template('mapapp/direction.html')
     context = {
         'destination': destination, 'origin': origin,
     }
