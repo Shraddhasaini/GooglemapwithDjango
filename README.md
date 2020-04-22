@@ -1,4 +1,4 @@
-# GooglemapwithDjango
+# :world_map: GooglemapwithDjango 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
 [![GitHub issues](https://img.shields.io/github/issues/Shraddhasaini/GooglemapwithDjango.svg)](https://github.com/Shraddhasaini/GooglemapwithDjango/)
