@@ -52,5 +52,5 @@ Help your users find the best way to get from A to Z with comprehensive data and
 
 * Want to ask any question about this project [us](https://github.com/Shraddhasaini/GooglemapwithDjango/) you can simply create an issue. we will reply to your questions there.
 
-Thanks for taking out your time!
+Thanks for taking out your time! :heart:
 [![saythanks](https://img.shields.io/badge/say-thanks-ff69b4.svg)](https://github.com/Shraddhasaini/GooglemapwithDjango/)
