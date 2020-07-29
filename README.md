@@ -5,8 +5,9 @@
 [![GitHub pull-requests](https://img.shields.io/github/issues-pr/Shraddhasaini/GooglemapwithDjango.svg)](https://github.com/Shraddhasaini/GooglemapwithDjango/)
 
 
-This is a Django project which simplifies feature of a map using Google maps API.
-Help your users find the best way to get from A to Z with comprehensive data and real-time traffic.
+>This is a Django project which simplifies feature of a map using Google maps API.
+>
+>Help your users find the best way to get from A to Z with comprehensive data and real-time traffic.
 
 ## :rainbow: API for Routes :
 
