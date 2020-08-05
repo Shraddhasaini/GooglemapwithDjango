@@ -26,7 +26,7 @@
 7. For direction page: http://127.0.0.1:8000/mapapp/mapapp/diretion/
 8. If error:port already in use: enter command : $sudo fuser -k 8000/tcp
 
-## :palm_tree: Contribution : :+1:
+## :palm_tree: Contribution :
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Shraddhasaini/GooglemapwithDjango/)
 [![GitHub contributors](https://img.shields.io/github/contributors/Shraddhasaini/GooglemapwithDjango.svg)](https://github.com/Shraddhasaini/GooglemapwithDjango/)
 
